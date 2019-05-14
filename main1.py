@@ -84,6 +84,36 @@ def exit_game():
     root.destroy()
 
 
+def save():
+    with open('my_game.txt', 'w') as f:
+        for i in range(len(grid)):
+            for j in range(len(grid[i])):
+                if grid[i][j].get_status():
+                    f.write('1')
+                else:
+                    f.write('0')
+            f.write('\n')
+
+
+def upload():
+    with open('my_game.txt', 'r') as f:
+        tr = 0
+        td = 0
+        for i in f:
+            for j in i.strip():
+                try:
+                    if j == '1' and not grid[tr][td].get_status():
+                        grid[tr][td].change_color()
+                    elif j == '0' and grid[tr][td].get_status():
+                        grid[tr][td].change_color()
+                except IndexError:
+                    pass
+                if j == '0' or j == '1':
+                    td += 1
+            tr += 1
+            td = 0
+
+
 def create_grid(sizex, sizey):
     y = -20
 

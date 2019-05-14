@@ -7,12 +7,14 @@ root.geometry('500x500')
 
 
 def play_help():
+    """ Help def play() to stop. """
     global stop
     stop = False
     play()
 
 
 def play():
+    """ Starting the game. """
     global stop
     if not stop:
         one_step()
@@ -20,11 +22,13 @@ def play():
 
 
 def stopping():
+    """ Stop the game. """
     global stop
     stop = True
 
 
 def one_step():
+    """ Make one step of the game. """
     for i in range(len(grid)):
         for j in range(len(grid[i])):
             grid[i][j].neighbours = 0
@@ -50,12 +54,14 @@ def one_step():
 
 
 def clear():
+    """ Clear game grid. """
     for i in range(len(grid)):
         for j in range(len(grid[i])):
             grid[i][j].clear()
 
 
 def remake(sizex, sizey):
+    """ Make grid with new sizes. """
     global root
     root.geometry('{}x{}'.format(sizex*20,sizey*20 + 20))
     global grid
@@ -69,22 +75,27 @@ def remake(sizex, sizey):
 
 
 def ten():
+    """ Make grid 10x10. """
     remake(10,10)
 
 
 def fifteen():
+    """ Make grid 15x15. """
     remake(15, 15)
 
 
 def twenty():
+    """ Make grid 25x25. """
     remake(25, 25)
 
 
 def exit_game():
+    """ Exit from the game. """
     root.destroy()
 
 
 def save():
+    """ Save position of the cells to the file. """
     with open('my_game.txt', 'w') as f:
         for i in range(len(grid)):
             for j in range(len(grid[i])):
@@ -96,6 +107,7 @@ def save():
 
 
 def upload():
+    """ Open position of the cells from the file. """
     with open('my_game.txt', 'r') as f:
         tr = 0
         td = 0
@@ -115,6 +127,7 @@ def upload():
 
 
 def create_grid(sizex, sizey):
+    """ Make new grid at first. """
     y = -20
 
     grid = [[] * sizex for i in range(sizey)]
@@ -130,6 +143,7 @@ def create_grid(sizex, sizey):
 
 
 def create_menu():
+    """ Make menu of the programm. """
     main_menu = Menu(root)
     root.configure(menu=main_menu)
     file = Menu(main_menu, tearoff=0)

@@ -3,7 +3,10 @@ import tkinter as tk
 
 class Cell(tk.Label):
     def __init__(self):
-        tk.Label.__init__(self, width=2, height=1, fg='#eee', bg="#eee", borderwidth=2, relief="solid", font='Arial 10')
+        tk.Label.__init__(self, width=2,
+                          height=1, fg='#eee',
+                          bg="#eee", borderwidth=2,
+                          relief="solid", font='Arial 10')
         self.status = False
         self.bind('<Button-1>', self.help_change_color)
         self.neighbours = 0

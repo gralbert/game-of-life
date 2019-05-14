@@ -8,10 +8,12 @@ class TestCell(unittest.TestCase):
         self.cell = Cell()
 
     def test_status(self):
-        self.assertEqual(self.cell.get_status(), self.cell.status)
+        self.assertEqual(self.cell.get_status(),
+                         self.cell.status)
 
     def test_change_color(self):
-        self.assertEqual(self.cell.get_neighbours(), self.cell.neighbours)
+        self.assertEqual(self.cell.get_neighbours(),
+                         self.cell.neighbours)
 
 
 if __name__ == '__main__':
